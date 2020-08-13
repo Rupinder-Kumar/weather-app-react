@@ -4,7 +4,7 @@ import "./currentWeather.css";
 
 const CurrentWeather = (props) => {
   const { city, weather } = props;
-
+    console.log(weather)
   const temperature =
     weather.length &&
     weather.map((weather, index) => {
