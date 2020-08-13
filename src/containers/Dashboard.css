@@ -1,6 +1,7 @@
 .weather-card {
     padding: 20px;
     background-color: #f2faff;
+    margin-bottom: 40px;
 }
 .jumbotron {
     background-color: #f6eff9cc;
@@ -13,4 +14,10 @@
 .forecasts li {
     padding: 10px 0;
     border-bottom: 1px solid #cdcdcd;
+}
+
+@media(max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
 }
