@@ -5,9 +5,9 @@ export default class Select extends Component {
     const {value, onChange, options} = this.props;
     return (
       <span>
-        <select  className="form-control" onChange={(e) => onChange(e.target.value)} value={value}>          {
+        <select className="form-control" onChange={(e) => onChange(e.target.value)} value={value}>          {
             options.map((option) => (
-              <option value={option} key={option}>
+              <option className="single-item" value={option} key={option}>
                 {option}
               </option>
             ))

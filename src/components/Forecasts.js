@@ -4,7 +4,7 @@ import { toCelsius, convertDate, findFrequent } from "../helper";
 
 const Forecasts = (props) => {
     const {forecasts} = props;
-    
+
     const averageHigh = forecasts.reduce((accumulator, temperature) => {return accumulator + temperature.high },0);
     const averageLow = forecasts.reduce((accumulator, temperature) => {return accumulator + temperature.low },0);
 
@@ -29,7 +29,7 @@ const Forecasts = (props) => {
               <p>High: <b>{toCelsius(forecast.high)}</b>, Low: <b>{toCelsius(forecast.low)}</b></p>
               </div>
           ]
-          return (<li key={i}>{weather}</li>);
+          return (<li className="forecast-item" key={i}>{weather}</li>);
         })}
       </ul>
       </>
