@@ -1,35 +1,60 @@
+import axios from "axios";
 import {
   FETCH_CITIES,
   SELECT_CITY,
   RECEIVE_FORECASTS,
-  SET_CURRENT_WEATHER
+  SET_CURRENT_WEATHER,
 } from "./types";
-import { result } from "../api/response";
-import { extractCities, extractForecasts, extractCurrentWeather } from "../helper";
+import {
+  extractCities,
+  extractForecasts,
+  extractCurrentWeather,
+} from "../helper";
 
 export const fetchCities = () => {
-    return async (dispatch) => {
-    const cities = extractCities(result);
-    dispatch({ type: FETCH_CITIES, payload: cities });
+  return async (dispatch) => {
+    axios
+      .get("http://localhost:3000/services/response.json")
+      .then((res) => {
+        const cities = extractCities(res.data);
+        dispatch({ type: FETCH_CITIES, payload: cities });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
 export const selectCity = (city) => {
-    return async (dispatch) => {
-        dispatch({type: SELECT_CITY, payload: city})
-    }
-}
+  return async (dispatch) => {
+    dispatch({ type: SELECT_CITY, payload: city });
+  };
+};
 
 export const setCurrentWeather = (city) => {
-    const currentWeather = extractCurrentWeather(city, result);
-    return async (dispatch) => {
-        dispatch({type: SET_CURRENT_WEATHER, payload: currentWeather})
-    }
-}
+  return async (dispatch) => {
+    axios
+      .get("http://localhost:3000/services/response.json")
+      .then((res) => {
+        const currentWeather = extractCurrentWeather(city, res.data);
+        dispatch({ type: SET_CURRENT_WEATHER, payload: currentWeather });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const fetchForeCasts = (city) => {
-    const forecasts = extractForecasts(city, result)
-    return async (dispatch) => {
-        dispatch({ type: RECEIVE_FORECASTS, payload: forecasts })
-    }
-}
+  return async (dispatch) => {
+    axios
+      .get("http://localhost:3000/services/response.json")
+      .then((res) => {
+        const forecasts = extractForecasts(city, res.data);
+        dispatch({ type: RECEIVE_FORECASTS, payload: forecasts });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

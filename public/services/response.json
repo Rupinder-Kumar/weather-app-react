@@ -1,4 +1,4 @@
-export const result = [{
+[{
     "location": {
         "city": "Bengaluru",
         "region": " KA",
